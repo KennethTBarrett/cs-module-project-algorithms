@@ -18,18 +18,31 @@ Returns: an integer
 
 def single_number(arr):
 
-    list1, list2 = [], []
+    # list1, list2 = [], []
 
-    for entry in arr:
-        if entry not in list1:
-            list1.append(entry)
+    # for entry in arr:
+    #     if entry not in list1:
+    #         list1.append(entry)
+    #     else:
+    #         list2.append(entry)
+
+    # for entry in list1:
+    #     if entry not in list2:
+    #         return entry
+    # return -1
+
+    # Improved version.
+    s = set() # O(1)
+
+    for item in arr:  # O(n)
+        # Loop through every element in the list.
+        if item in s:  # O(1)
+            s.remove(item)  # O(1)
         else:
-            list2.append(entry)
-
-    for entry in list1:
-        if entry not in list2:
-            return entry
-    return -1
+            s.add(item)  #O(1)
+        
+        # There should now be only one element in our set.
+    return list(s)[0]  # O(1)
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
